@@ -113,8 +113,32 @@ class Shape: Hashable, CustomStringConvertible {
         }
     }
     
+    final func rotateClockWise() {
+        let newOrientation = Orientation.rotate(orientation, clockwise: true)
+        rotateBlocks(newOrientation)
+        orientation = newOrientation
+    }
+    
+    final func rotateCounterClockwise() {
+        let newOrientation = Orientation.rotate(orientation, clockwise: false)
+        rotateBlocks(newOrientation)
+        orientation = newOrientation
+    }
+    
     final func lowerShapeByOneRow() {
         shiftBy(0, rows: 1)
+    }
+    
+    final func raiseShapeByOneRow() {
+        shiftBy(0, rows: -1)
+    }
+    
+    final func shiftRightByOneRow() {
+        shiftBy(1, rows: 0)
+    }
+    
+    final func shiftLeftByOneRow() {
+        shiftBy(-1, rows: 0)
     }
     
     final func shiftBy(columns: Int, rows: Int) {
